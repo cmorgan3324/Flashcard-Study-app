@@ -3,8 +3,9 @@ import Deck from "./Deck";
 import { Link } from "react-router-dom";
 
 function DeckList({ decks }) {
+
+  // Map method to list each deck within decks
   const list = decks.map((deck) => <Deck key={deck.id} deck={deck} />);
-  //console.log(list);
 
   return (
     <div>
