@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { readDeck, deleteDeck } from "../utils/api";
 import { Link, useParams, useRouteMatch, useHistory } from "react-router-dom";
-
 import CardList from "./CardList";
 
 function ReadDeck() {
@@ -10,17 +9,17 @@ function ReadDeck() {
   const deckId = useParams().deckId;
   const history = useHistory();
 
+  // Load deck
   useEffect(() => {
     console.log("readDeckEffect");
     const abortController = new AbortController();
-
     readDeck(deckId, abortController.signal)
       .then(setCurrentDeck)
       .catch(setError);
-
     return () => abortController.abort();
   }, []);
 
+  // Delete handler
   const deleteHandler = async () => {
     const result = window.confirm("Delete this deck?");
     if (result === true) {
@@ -28,6 +27,7 @@ function ReadDeck() {
       history.push("/");
     }
   };
+  
   if (!currentDeck) {
     return <p>Loading...</p>;
   }
