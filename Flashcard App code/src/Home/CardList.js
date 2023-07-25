@@ -2,11 +2,7 @@ import React from "react";
 import Card from "./Card";
 
 function CardList({ currentDeckCards }) {
-  // const currentDeckCards = cards.filter(
-  //   (card) => currentDeck.id == card.deckId
-  // );
-  console.log(currentDeckCards);
-
+  // Map method to list cards within the currently accessed deck
   const cardList = currentDeckCards.map((card) => (
     <Card key={card.id} card={card} />
   ));
