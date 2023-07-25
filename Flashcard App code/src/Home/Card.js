@@ -4,26 +4,22 @@ import { deleteCard, readCard } from "../utils/api";
 import EditCard from "./EditCard";
 
 function Card({ card }) {
-  //const [cards, setCards] = useState([]);
+
   const [error, setError] = useState(undefined);
   const { url } = useRouteMatch();
-  // console.log(useRouteMatch());
-  //const deckOfCards = cards.filter((card) => deck.id === card.deckId);
-  //console.log(deckOfCards);
-  //console.log(card);
   const history = useHistory();
 
+  // Delete Handler
   const deleteHandler = async () => {
     const result = window.confirm("Delete this card?");
-    //console.log(result);
     if (result === true) {
       await deleteCard(card.id);
       history.go(0);
     }
   };
 
+  // Load card
   useEffect(() => {
-    //console.log("UseEffect");
     const abortController = new AbortController();
 
     readCard(card.id, abortController.signal).catch(setError);
