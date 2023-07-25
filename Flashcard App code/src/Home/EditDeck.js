@@ -3,33 +3,28 @@ import { Link, useParams } from "react-router-dom";
 import { updateDeck, readDeck } from "../utils/api";
 
 function EditDeck() {
-  const deckId = useParams().deckId;
-
   const [currentDeck, setCurrentDeck] = useState([]);
-
   const [error, setError] = useState(undefined);
-
-  // const [name, setName] = useState("");
-  // const handleNameChange = (event) => setName(event.target.value);
-
-  // const [description, setDescription] = useState("");
-  // const handleDescriptionChange = (event) => setDescription(event.target.value);
-
+  const deckId = useParams().deckId;
+  const { id } = currentDeck;
+  
+// Name change handler
   const handleNameChange = (event) =>
     setCurrentDeck({
       ...currentDeck,
       name: event.target.value,
     });
 
+  // Description change handler
   const handleDescriptionChange = (event) =>
     setCurrentDeck({
       ...currentDeck,
       description: event.target.value,
     });
 
+  // Load deck
   useEffect(() => {
     const abortController = new AbortController();
-
     readDeck(deckId, abortController.signal)
       .then(setCurrentDeck)
       .catch(setError);
@@ -37,15 +32,11 @@ function EditDeck() {
     return () => abortController.abort();
   }, []);
 
-  console.log(currentDeck);
-  const { id } = currentDeck;
-
+// Submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Submitted:", currentDeck, deckId);
     try {
       let newDeck = await updateDeck(currentDeck);
-      console.log(newDeck);
     } catch (error) {
       throw error;
     }
@@ -67,7 +58,6 @@ function EditDeck() {
           </li>
         </ol>
       </nav>
-
       <h1>Edit Deck</h1>
       <form>
         <div class="mb-3">
@@ -80,7 +70,6 @@ function EditDeck() {
             id="name"
             onChange={handleNameChange}
             value={currentDeck.name}
-            // placeholder={`${currentDeck.name}`}
           />
         </div>
         <div class="mb-3">
@@ -93,7 +82,6 @@ function EditDeck() {
             id="description"
             onChange={handleDescriptionChange}
             value={currentDeck.description}
-            // placeholder={`${currentDeck.description}`}
           />
         </div>
         <div>
@@ -102,7 +90,6 @@ function EditDeck() {
               Cancel
             </button>
           </Link>
-
           <button
             className="btn btn-primary"
             type="submit"
