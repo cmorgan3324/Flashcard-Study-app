@@ -4,7 +4,6 @@ import { deleteCard, readCard } from "../utils/api";
 import EditCard from "./EditCard";
 
 function Card({ card }) {
-
   const [error, setError] = useState(undefined);
   const { url } = useRouteMatch();
   const history = useHistory();
