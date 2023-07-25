@@ -7,66 +7,51 @@ function EditCard() {
   const [currentDeck, setCurrentDeck] = useState([]);
   const [currentCard, setCurrentCard] = useState({});
   const [error, setError] = useState(undefined);
-
-  // const [front, setFront] = useState("");
+  
+  const history = useHistory();
+  const deckId = useParams().deckId;
+  const cardId = useParams().cardId;
+  const { id } = currentCard;
+  
+// Front of card change handler
   const handleFrontChange = (event) =>
     setCurrentCard({
       ...currentCard,
       front: event.target.value,
     });
 
-  // const [back, setBack] = useState("");
+  // Back of card change handler
   const handleBackChange = (event) =>
     setCurrentCard({
       ...currentCard,
       back: event.target.value,
     });
 
-  const history = useHistory();
-
-  console.log(useParams());
-  const deckId = useParams().deckId;
-  const cardId = useParams().cardId;
-
-  // console.log(id);
-  // console.log(deckId);
-  //const deckId = currentDeck.id;
-
+ // Load deck 
   useEffect(() => {
     const abortController = new AbortController();
-
     readDeck(deckId, abortController.signal)
       .then(setCurrentDeck)
       .catch(setError);
-
     return () => abortController.abort();
   }, []);
 
-  console.log(currentDeck);
-
+// Load card
   useEffect(() => {
     const abortController = new AbortController();
-
     readCard(cardId, abortController.signal)
       .then(setCurrentCard)
       .catch(setError);
-
     return () => abortController.abort();
   }, []);
 
-  const { id } = currentCard;
-  console.log(id);
-  console.log(deckId);
-  // console.log(currentCard);
-
+  // Submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitted:", currentCard);
     try {
       let newCard = await updateCard(currentCard);
       console.log(newCard);
-      // setFront("");
-      // setBack("");
       history.push(`/decks/${deckId}`);
     } catch (error) {
       throw error;
@@ -88,7 +73,6 @@ function EditCard() {
           </li>
         </ol>
       </nav>
-
       <h1>Edit Card</h1>
       <CardForm
         deckId={deckId}
