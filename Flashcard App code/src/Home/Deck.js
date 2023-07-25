@@ -5,15 +5,11 @@ import { deleteDeck } from "../utils/api";
 function Deck({ deck }) {
   const [cards, setCards] = useState([]);
   const { url } = useRouteMatch();
-  //console.log(useRouteMatch());
-  const deckOfCards = cards.filter((card) => deck.id == card.deckId);
-  //console.log(deckOfCards);
-
   const history = useHistory();
 
+  // Delete handler
   const deleteHandler = async () => {
     const result = window.confirm("Delete this deck?");
-    //console.log(result);
     if (result === true) {
       await deleteDeck(deck.id);
       history.push("/");
