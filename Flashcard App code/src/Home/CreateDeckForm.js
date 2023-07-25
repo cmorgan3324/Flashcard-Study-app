@@ -3,31 +3,20 @@ import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../utils/api";
 
 function CreateDeckForm() {
-  //const { url, path } = useRouteMatch();
-
-  //console.log(useRouteMatch());
-  //console.log(decks);
-
   const history = useHistory();
+  
   const [name, setName] = useState("");
-
   const handleNameChange = (event) => setName(event.target.value);
 
   const [description, setDescription] = useState("");
   const handleDescriptionChange = (event) => setDescription(event.target.value);
 
-  // const lastDeck = decks[decks.length - 1];
-
+  // Submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitted:", name, description);
     try {
       let newDeck = await createDeck({ name, description });
-      // console.log(decks);
-      console.log(newDeck);
-      // console.log(newDeck.id);
-      // setDecks([...decks, newDeck]);
-      //console.log(setDecks([newDeck]));
       setName("");
       setDescription("");
       history.push(`/decks/${newDeck.id}`);
@@ -49,7 +38,6 @@ function CreateDeckForm() {
           </li>
         </ol>
       </nav>
-
       <h1>Create Deck</h1>
       <form>
         <div class="mb-3">
@@ -84,7 +72,6 @@ function CreateDeckForm() {
               Cancel
             </button>
           </Link>
-
           <button
             className="btn btn-primary"
             type="submit"
