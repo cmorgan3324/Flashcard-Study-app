@@ -15,13 +15,9 @@ function AddCard() {
 
   const history = useHistory();
 
-  console.log(useParams());
   const deckId = useParams().deckId;
 
-  // console.log(id);
-  // console.log(deckId);
-  //const deckId = currentDeck.id;
-
+// Load deck
   useEffect(() => {
     console.log("readDeckEffect");
     const abortController = new AbortController();
@@ -33,23 +29,17 @@ function AddCard() {
     return () => abortController.abort();
   }, []);
 
+  // Submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitted:", front, back);
     try {
-      // const abortController = new AbortController();
       let newCard = await createCard(
         deckId,
         { front, back }
-        // abortController.signal
       );
-
-      console.log(newCard);
-
       setFront("");
       setBack("");
-      // history.go(0);
-      // return () => abortController.abort();
     } catch (error) {
       throw error;
     }
