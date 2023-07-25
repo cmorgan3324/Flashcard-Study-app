@@ -9,7 +9,9 @@ function CardForm({
   handleFrontChange,
   handleBackChange,
   handleSubmit,
-}) {
+}) 
+
+// Form conditional to render in AddCard and EditCard
   if (currentCard) {
     return (
       <form>
@@ -23,7 +25,6 @@ function CardForm({
             id="front"
             onChange={handleFrontChange}
             value={currentCard.front}
-            // placeholder={`${currentCard.front}`}
           />
         </div>
         <div class="mb-3">
@@ -36,7 +37,6 @@ function CardForm({
             id="back"
             onChange={handleBackChange}
             value={currentCard.back}
-            // placeholder={`${currentCard.back}`}
           />
         </div>
         <div>
@@ -45,7 +45,6 @@ function CardForm({
               Done
             </button>
           </Link>
-
           <button
             className="btn btn-primary"
             type="submit"
