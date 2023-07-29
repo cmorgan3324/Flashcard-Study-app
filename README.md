@@ -1,4 +1,4 @@
-Flashcard Study App
+#Flashcard Study App
 This is a simple Flashcard Study app that allows users to create decks of cards, add, edit, and delete cards and decks, and study using the flashcards.
 
 Features
