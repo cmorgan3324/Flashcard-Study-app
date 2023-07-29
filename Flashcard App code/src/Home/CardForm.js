@@ -9,9 +9,8 @@ function CardForm({
   handleFrontChange,
   handleBackChange,
   handleSubmit,
-}) 
-
-// Form conditional to render in AddCard and EditCard
+}) {
+  // Form conditional to render in AddCard and EditCard
   if (currentCard) {
     return (
       <form>
@@ -45,6 +44,7 @@ function CardForm({
               Done
             </button>
           </Link>
+
           <button
             className="btn btn-primary"
             type="submit"
