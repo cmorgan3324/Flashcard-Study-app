@@ -2,20 +2,20 @@
 This is a simple Flashcard Study app that allows users to create decks of cards, add, edit, and delete cards and decks, and study using the flashcards.
 
 ## Features
-Create decks of cards
-Add, edit, and delete cards within a deck
-Display each card for studying
+- Create decks of cards
+- Add, edit, and delete cards within a deck
+- Display each card for studying
 
 ## Technologies Used
-HTML
-CSS
-JavaScript
-jQuery
-Bootstrap
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Bootstrap
 
 ## Installation
-Clone the repository: git clone https://github.com/your-username/flashcard-study-app.git
-Navigate to the project directory: cd flashcard-study-app
+- Clone the repository: git clone https://github.com/your-username/flashcard-study-app.git
+- Navigate to the project directory: cd flashcard-study-app
 
 ## Usage
 - Open the index.html file in your preferred web browser.
