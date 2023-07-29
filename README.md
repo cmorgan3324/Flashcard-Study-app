@@ -27,6 +27,6 @@ This is a simple Flashcard Study app that allows users to create decks of cards,
 - To study the cards, click on the "Study" button in the deck view.
 - Click on the "Next" button to navigate between cards and view the question and answer side.
 - Click on the "Flip" button (or press the spacebar) to flip the card and reveal the answer.
-- Repeat steps 8 and 9 until you have gone through all the cards.
+
 
 
