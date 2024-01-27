@@ -14,7 +14,7 @@ This is a simple Flashcard Study app that allows users to create decks of cards,
 - Bootstrap
 
 ## Installation
-1. Clone the repository: git clone https://github.com/your-username/flashcard-study-app.git
+1. Clone the repository: git clone https://github.com/cmorgan3324/flashcard-study-app.git
 2. Navigate to the project directory: cd flashcard-study-app
 
 ## Usage
